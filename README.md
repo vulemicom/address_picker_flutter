@@ -4,16 +4,18 @@ A flutter plugin for pick address. (Support VietNam Only)
 
 How to add lib to your project:
 
+```
 dependencies:
   ....
   address_picker:
     git:
       url: git://github.com/vulemicom/address_picker_flutter.git
-
+```
 
 
 How to use:
 
+```
 import 'package:address_picker/address_picker.dart';
 
 Container(
@@ -26,6 +28,8 @@ Container(
              },
     ),
 )
+
+```
 
 Screenshot for sample app:
 
