@@ -16,9 +16,10 @@ class AddressPicker extends StatefulWidget {
   Widget Function(String text) buildItem;
   Widget underline;
   EdgeInsets insidePadding;
+  TextStyle placeHolderTextStyle;
   Function(String) onAddressChanged;
 
-  AddressPicker({this.buildItem, this.underline, this.insidePadding, @required this.onAddressChanged});
+  AddressPicker({this.buildItem, this.underline, this.insidePadding, this.placeHolderTextStyle, @required this.onAddressChanged});
 
   @override
   State<StatefulWidget> createState() {
@@ -84,7 +85,8 @@ class _AddressPickerState extends State<AddressPicker> {
               height: 60.0,
               child: DropdownButton<Province>(
                   underline: widget.underline,
-                  hint: Text('Vui lòng chọn tỉnh/tp'),
+                  hint: Text('Vui lòng chọn tỉnh/tp',
+                      style: TextStyle().merge(widget.placeHolderTextStyle != null ? widget.placeHolderTextStyle : null)),
                   value: _provinceSelected,
                   items: _provinceList.map((p) {
                     return DropdownMenuItem<Province>(
@@ -106,7 +108,8 @@ class _AddressPickerState extends State<AddressPicker> {
                   height: 60.0,
                   width: double.infinity,
                   child: DropdownButton<District>(
-                      hint: Text('Vui lòng chọn quận/huyện'),
+                      hint: Text('Vui lòng chọn quận/huyện',
+                          style: TextStyle().merge(widget.placeHolderTextStyle != null ? widget.placeHolderTextStyle : null)),
                       value: _districtSelected,
                       underline: widget.underline,
                       items: (_provinceSelected ?? Province(districts: [])).districts.map((d) {
@@ -126,7 +129,8 @@ class _AddressPickerState extends State<AddressPicker> {
               height: 60.0,
               width: double.infinity,
               child: DropdownButton<Wards>(
-                  hint: Text('Vui lòng chọn phường/xã'),
+                  hint: Text('Vui lòng chọn phường/xã',
+                      style: TextStyle().merge(widget.placeHolderTextStyle != null ? widget.placeHolderTextStyle : null)),
                   value: _wardsSelected,
                   underline: widget.underline,
                   items: (_districtSelected ?? District(wards: [])).wards.map((w) {
